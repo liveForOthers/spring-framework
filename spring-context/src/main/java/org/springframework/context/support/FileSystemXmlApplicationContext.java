@@ -135,9 +135,17 @@ public class FileSystemXmlApplicationContext extends AbstractXmlApplicationConte
 	public FileSystemXmlApplicationContext(
 			String[] configLocations, boolean refresh, @Nullable ApplicationContext parent)
 			throws BeansException {
+		//调用父类的构造方法
+		//调用父类容器的构造方法(super(parent)方法)为容器设置好Bean资源加载器（AbstractApplicationContext）。
 
 		super(parent);
+		// 告诉读取器配置文件的位置
+		////再调用父类AbstractRefreshableConfigApplicationContext的setConfigLocations(configLocations)方法设置Bean定义资源文件的定位路径。
 		setConfigLocations(configLocations);
+		//刷新
+		//SpringIOC容器对Bean定义资源的载入是从refresh()函数开始的，refresh()是一个模板方法，
+		//refresh()方法的作用是：在创建IOC容器前，如果已经有容器存在，则需要把已有的容器销毁和关闭，以保证在refresh之后使用的是新建立起来的IOC容器。
+		//refresh的作用类似于对IOC容器的重启，在新建立好的容器中对容器进行初始化，对Bean定义资源进行载入
 		if (refresh) {
 			refresh();
 		}
