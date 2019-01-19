@@ -356,6 +356,7 @@ public interface BeanFactory {
 	 * @return the aliases, or an empty array if none
 	 * @see #getBean
 	 */
+
 	//获取 名字为name 的bean 的别名  如果name为别名  也会返回原始name
 	String[] getAliases(String name);
 
